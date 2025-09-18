@@ -1,0 +1,38 @@
+<?php
+
+namespace Database\Factories;
+
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Book>
+ */
+class BookFactory extends Factory
+{
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
+    public function definition(): array
+    {
+        return [
+            //
+            'title' => fake()->sentence(6),
+            'subtitle' => fake()->sentence(3),
+            'authors' => fake()->name(),
+            'publisher' => fake()->name(),
+            'publishedDate' => fake()->date(),
+            'description' => fake()->paragraph(),
+            'available_copies' => fake()->numberBetween(1, 10),
+            
+            'pageCount' => fake()->numberBetween(100, 1000),
+            'categories' => fake()->word(),
+
+            'thumbnail' => fake()->imageUrl(),
+            'previewLink' => fake()->url(),
+            'industryIdentifiers' => fake()->uuid(),
+            'infoLink' => fake()->url(),
+        ];
+    }
+}
