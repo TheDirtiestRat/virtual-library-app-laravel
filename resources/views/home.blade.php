@@ -9,7 +9,7 @@
                 class="bg-paper rounded-2xl shadow-lg p-8 flex flex-col justify-center items-center text-center">
                 <h1 class="text-3xl font-bold text-gray-800">Welcome to</h1>
                 <div class="mt-2">
-                    @include('components.title')
+                    <h1 class="text-4xl font-semibold">ACLC Virtual Library</h1>
                 </div>
                 <p class="mt-4 text-gray-600 text-sm">
                     Manage and explore your collection with ease.
@@ -37,7 +37,7 @@
             <div
                 class="text-shadow p-2 flex flex-col justify-center items-center text-center">
                 <p class="text-gray-200 text-sm">
-                    @ Develop by Programmers Guild
+                    @ Developed by Programmers Guild
                 </p>
             </div>
         </div>
