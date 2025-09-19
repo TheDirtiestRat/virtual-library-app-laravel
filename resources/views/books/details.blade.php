@@ -4,7 +4,7 @@
     <div class="p-6">
         <div class="flex flex-col gap-6 w-full h-full">
             <!-- Header -->
-            <div class="bg-white rounded-xl shadow p-5 flex items-center justify-between">
+            <div class="bg-amber-50 rounded-xl shadow p-5 flex items-center justify-between">
                 <div>
                     <h1 class="text-2xl font-bold">Book Details</h1>
                     <p class="text-gray-500 text-sm">Comprehensive information about this book.</p>
@@ -19,7 +19,7 @@
             <!-- Main Content -->
             <div class="flex flex-row gap-6 h-full w-full">
                 <!-- Left Sidebar (Book Cover & Basic Info) -->
-                <div class="bg-white rounded-xl shadow p-4 flex flex-col gap-3 w-[320px] shrink-0">
+                <div class="bg-amber-50 rounded-xl shadow p-4 flex flex-col gap-3 w-[320px] shrink-0">
                     <img src="{{ asset('storage/book-covers/' . $book->thumbnail) }}" alt="Book Cover"
                         class="w-full h-80 object-cover rounded-lg shadow-sm"
                         onerror="this.onerror=null;this.src='{{ asset('storage/images/book-cover-placeholder.jpeg') }}';" />
@@ -34,7 +34,7 @@
                 </div>
 
                 <!-- Right Content (Details + Description) -->
-                <div class="bg-white rounded-xl shadow p-6 flex flex-col gap-4 flex-1 overflow-y-auto">
+                <div class="bg-amber-50 rounded-xl shadow p-6 flex flex-col gap-4 flex-1 overflow-y-auto">
                     <h2 class="text-xl font-semibold border-b pb-2">About the Book</h2>
 
                     <dl class="grid grid-cols-2 gap-x-6 gap-y-3 text-sm">
