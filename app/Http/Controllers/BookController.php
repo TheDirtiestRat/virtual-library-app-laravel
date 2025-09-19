@@ -32,9 +32,13 @@ class BookController extends Controller
     {
         return view('books.create');
     }
-    public function edit(): View
+    public function edit(string $book_id): View
     {
-        return view('books.edit');
+        $book = Book::where('id', $book_id)->firstOrFail();
+
+        // dd($book);
+
+        return view('books.edit', compact('book'));
     }
 
     public function store(Request $request)
@@ -93,7 +97,73 @@ class BookController extends Controller
         // return redirect('/books/manage')->with('success', 'Book added successfully!');
     }
 
-    public function update() {}
+    public function update(Request $request)
+    {
+        // Validate and store the new book
+        $validatedData = $request->validate([
+            'book_id' => 'required',
+            'isbn' => 'required|string|max:13',
+            'title' => 'required|string|max:255',
+            'subtitle' => 'nullable|string|max:255',
+            'authors' => 'nullable|string|max:255',
+            'publisher' => 'nullable|string|max:255',
+            'publication_date' => 'nullable|date',
+            'description' => 'nullable|string',
+            'pageCount' => 'nullable|integer',
+            'categories' => 'required|string|max:255',
+
+            // 'thumbnail' => 'nullable|url',
+            // 'industryIdentifiers' => 'nullable|string|max:255',
+            'previewLink' => 'nullable|string',
+            'infoLink' => 'nullable|string',
+
+            'available_copies' => 'nullable|integer|min:0',
+
+            // check file validation
+            'book_cover' => ['nullable', File::types(['png', 'jpg', 'jpeg', 'gif'])->max(5 * 1024),],
+        ]);
+
+        // find book
+        $book = Book::where('id', $validatedData['book_id'])->first();
+
+        // dd($validatedData['book_id']);
+
+        if (!$book) {
+            return redirect('/books/manage')->with('message', 'Book Not Found!');
+        }
+
+        // Handle file upload if present
+        $fileExtension = ($request->hasFile('book_cover')) ? $request->file('book_cover')->extension() : "png";
+        $fileName = ($request->hasFile('book_cover')) ? time() . '_' . $validatedData['isbn'] . "." . $fileExtension : $book->thumbnail;
+
+        if ($request->hasFile('book_cover')) {
+            // Delete old cover if exists
+            if ($book->thumbnail && Storage::disk('public')->exists('book-covers/' . $book->thumbnail)) {
+                Storage::disk('public')->delete('book-covers/' . $book->thumbnail);
+            }
+            $path = $request->file('book_cover')->storeAs('book-covers', $fileName, 'public');
+        }
+
+        // Update book fields
+        $book->title = $validatedData['title'];
+        $book->subtitle = $validatedData['subtitle'] ?? null;
+        $book->authors = $validatedData['authors'] ?? null;
+        $book->publisher = $validatedData['publisher'] ?? null;
+        $book->publishedDate = $validatedData['publication_date'] ?? null;
+        $book->description = $validatedData['description'] ?? null;
+        $book->pageCount = $validatedData['pageCount'] ?? null;
+        $book->categories = $validatedData['categories'] ?? null;
+        $book->thumbnail = $fileName ?? $book->thumbnail;
+        $book->industryIdentifiers = $validatedData['isbn'] ?? null;
+        $book->previewLink = $validatedData['previewLink'] ?? null;
+        $book->infoLink = $validatedData['infoLink'] ?? null;
+        $book->available_copies = $validatedData['available_copies'] ?? $book->available_copies;
+
+        $book->save();
+
+        return redirect('/books/manage')->with('success', $validatedData['title'] . ' Book Updated successfully!');
+        // return redirect('/books/manage')->with('success', 'Book added successfully!');
+    }
 
     public function delete($book_id)
     {
@@ -119,25 +189,30 @@ class BookController extends Controller
 
     public function manage(): View
     {
-        $books = Book::latest()->paginate(100);
+        $books = Book::latest()->paginate(50);
         $categories = Book::select('categories')->distinct()->get();
         $all_books = Book::count();
 
         return view('books.manage', compact('books', 'categories', 'all_books'));
     }
 
-    public function getBookByCategory(string $category)
+    public function getBookByCategory(string $category,$is_manage)
     {
         $books = Book::where('categories', $category)->paginate(20);
-        // dd($category);
+        // dd($is_manage);
         $categories = Book::select('categories')->distinct()->get();
         $all_books = Book::count();
+
+        if ($is_manage) {
+            return view('books.manage', compact('books', 'categories', 'all_books'));
+        }
 
         return view('books.list', compact('books', 'categories', 'all_books'));
     }
 
     public function searchBook(Request $request)
     {
+        $searchFor = $request->input('for_manage');
         $query = $request->input('search');
 
         if ($query) {
@@ -156,6 +231,10 @@ class BookController extends Controller
 
         $categories = Book::select('categories')->distinct()->get();
         $all_books = Book::count();
+
+        if ($searchFor) {
+            return view('books.manage', compact('books', 'categories', 'all_books'));
+        }
 
         return view('books.list', compact('books', 'categories', 'all_books'));
     }

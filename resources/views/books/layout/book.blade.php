@@ -1,7 +1,7 @@
 @extends('layout.app')
 
 @section('content')
-    <div class="p-4 h-screen w-screen">
+    <div class="p-4 h-full lg:h-screen w-full">
         <div class="basis-full flex flex-col gap-4 h-full w-full">
             <div class="bg-white rounded-xl shadow p-4 basis-auto flex flex-row justify-between items-center">
                 <div class="">
@@ -16,7 +16,7 @@
                 <a href="{{ url('/books/manage') }}"
                     class="shadow rounded-xl p-3 hover:bg-gray-100 focus:outline-2 basis-auto">Back</a>
             </div>
-            <div class=" h-full basis-full flex flex-row gap-4">
+            <div class="h-full basis-full flex flex-row gap-4">
                 {{-- content --}}
                 @yield('page-content')
             </div>

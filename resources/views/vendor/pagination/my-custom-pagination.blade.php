@@ -1,6 +1,6 @@
 <div class="flex flex-row gap-1 items-center">
     @if ($paginator->onFirstPage())
-        <a class="page-link bg-white text-gray-800 p-2 px-4 rounded-xl shadow-md" href="#"
+        <a class="page-link bg-gray-300 text-gray-800 p-2 px-4 rounded-xl shadow-md" href="#"
             tabindex="-1">Previous</a>
         {{-- <li class="page-item disabled">
         </li> --}}
@@ -20,7 +20,7 @@
         {{-- <li class="page-item">
         </li> --}}
     @else
-        <a class="page-link bg-white text-gray-800 p-2 px-4 rounded-xl shadow-md "
+        <a class="page-link bg-gray-300 text-gray-800 p-2 px-4 rounded-xl shadow-md "
             href="#">Next</a>
         {{-- <li class="page-item disabled">
         </li> --}}
