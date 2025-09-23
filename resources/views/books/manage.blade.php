@@ -14,13 +14,14 @@
                     </div>
                     <!-- Knowledge is power. - Francis Bacon -->
                     {{-- search tab --}}
-                    {{-- <form action="{{ url('books_search') }}" class="flex flex-row gap-2" method="GET">
+                    <form action="{{ url('books_search') }}" class="flex flex-row gap-2" method="GET">
+                        <input type="checkbox" name="for_manage" id="" class="hidden" value="managing" checked>
                         <input type="text" name="search" id="search" placeholder="Search Book..."
                             class="w-full p-2 border border-gray-300 rounded-xl col-span-full" value="" />
                         <button type="submit"
                             class="bg-gray-200 rounded-xl shadow-md p-3 px-4 hover:bg-gray-300 whitespace-nowrap">Search
                             Book</button>
-                    </form> --}}
+                    </form>
                 </div>
                 <div class="bg-amber-50 rounded-xl shadow p-4 h-full basis-full overflow-auto">
                     {{-- list of books by table --}}
@@ -41,9 +42,9 @@
                                     <td class="px-4 py-2 ">{{ $book->title }}</td>
                                     <td class="px-4 py-2 ">{{ $book->authors }}</td>
                                     <td class="px-4 py-2 text-center">{{ $book->available_copies }}</td>
-                                    <td class="px-4 py-2 w-1/6">
-                                        <a href="{{ url('/books/' . $book->id) }}"
-                                            class="text-gray-500 hover:underline">View Details</a>
+                                    <td class="px-4 py-2 w-1/6 text-center">
+                                        <a href="{{ url('/books/manage/editBookInfo/' . $book->id) }}"
+                                            class="text-gray-500 hover:underline">Edit Details</a>
                                     </td>
                                 </tr>
                             @endforeach

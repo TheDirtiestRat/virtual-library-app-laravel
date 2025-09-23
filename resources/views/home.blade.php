@@ -35,7 +35,7 @@
             </div>
 
             <div
-                class="text-shadow p-2 flex flex-col justify-center items-center text-center">
+                class="text-shadow flex flex-col justify-center items-center text-center">
                 <p class="text-gray-200 text-sm">
                     @ Developed by Programmers Guild
                 </p>

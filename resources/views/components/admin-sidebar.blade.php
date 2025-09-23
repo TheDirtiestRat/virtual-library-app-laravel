@@ -37,12 +37,11 @@
                 <p class="text-gray-500 italic">No Categories</p>
             @else
                 @foreach ($categories as $category)
-                    <a href="{{ url('/books/category', $category->categories) }}"
-                        class="shadow rounded-xl p-3 bg-parchment hover:bg-gray-200 focus:outline-2 transition">
-                        {{ $category->categories }}
-                    </a>
-                    {{-- <button class="shadow rounded-xl p-3 bg-white hover:bg-gray-100 focus:outline-2 basis-auto">{{
-                        $category->categories }}</button> --}}
+                    <a href="{{ url('/books/category/'.$category->categories.'/'. true) }}"
+                        class="shadow rounded-xl p-3 bg-parchment hover:bg-gray-100 focus:outline-2 basis-auto">
+                        {{ $category->categories }}</a>
+                    {{-- <button
+                        class="shadow rounded-xl p-3 bg-white hover:bg-gray-100 focus:outline-2 basis-auto">{{ $category->categories }}</button> --}}
                 @endforeach
             @endempty
         @endisset
