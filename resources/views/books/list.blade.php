@@ -18,6 +18,7 @@
                     <form action="{{ url('books_search') }}" class="flex flex-row gap-2" method="GET"
                         >
                         {{-- @csrf --}}
+                        <input type="checkbox" name="for_manage" id="" class="hidden" value="managing">
                         <input type="text" name="search" id="search" placeholder="Search Book..."
                             class="w-full p-2 border border-gray-300 rounded-xl col-span-full" value="" />
                         <button type="submit"

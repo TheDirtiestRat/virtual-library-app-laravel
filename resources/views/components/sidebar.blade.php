@@ -11,7 +11,7 @@
                 <button class="text-gray-800 hover:text-gray-700 basis-auto">No Categories</button>
             @else
                 @foreach ($categories as $category)
-                    <a href={{ url('/books/category', $category->categories) }}
+                    <a href="{{ url('/books/category/'.$category->categories.'/'. false) }}"
                         class="shadow rounded-xl p-3 bg-white hover:bg-gray-100 focus:outline-2 basis-auto">
                         {{ $category->categories }}</a>
                     {{-- <button
