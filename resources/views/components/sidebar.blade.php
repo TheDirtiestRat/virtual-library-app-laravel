@@ -1,8 +1,11 @@
 <div class="h-full min-w-[280px] flex flex-col gap-3">
-    <div class="bg-amber-50 rounded-xl shadow p-4 relative">
-        <div class="flex flex-col items-center justify-center">
-            <h1 class="text-2xl text-ink font-semibold">ACLC</h1>
-            <h1 class="text-2xl text-ink font-semibold">Virtual Library</h1>
+    <div class="bg-amber-50 rounded-xl shadow p-4 basis-1/2 w-full h-full relative">
+        {{-- ther is a reason why this is offcenter because we will add some designs later in this --}}
+        <div class="flex flex-col right-4 bottom-4 absolute">
+            {{-- use the tile component premade it exist for it's purpose --}}
+            @include('components.title')
+            {{-- <h1 class="text-2xl text-ink font-semibold">ACLC</h1>
+            <h1 class="text-2xl text-ink font-semibold">Virtual Library</h1> --}}
         </div>
     </div>
     <div class="basis-full flex flex-col gap-2 overflow-y-auto px-1">

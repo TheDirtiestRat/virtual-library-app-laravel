@@ -1,5 +1,6 @@
 <div class="h-full min-w-[280px] flex flex-col gap-3">
     <div class="bg-amber-50 rounded-xl shadow p-4 relative">
+        {{-- ther is a reason why this is offcenter --}}
         <div class="flex flex-col items-center justify-center">
             <h1 class="text-2xl text-ink font-semibold">ACLC</h1>
             <h1 class="text-2xl text-ink font-semibold">Virtual Library</h1>
@@ -11,7 +12,7 @@
         <i class="bi bi-plus-circle pr-2"></i>
         Add Book
     </a>
-
+    {{-- dont change this part it dosent match the whole side bar thing --}}
     <form action="{{ route('import-book.csv') }}" method="POST" enctype="multipart/form-data"
         class="flex flex-col gap-2">
         @csrf

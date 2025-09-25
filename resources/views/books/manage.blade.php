@@ -19,7 +19,7 @@
                         <input type="text" name="search" id="search" placeholder="Search Book..."
                             class="w-full p-2 border border-gray-300 rounded-xl col-span-full" value="" />
                         <button type="submit"
-                            class="bg-gray-200 rounded-xl shadow-md p-3 px-4 hover:bg-gray-300 whitespace-nowrap">Search
+                            class="bg-highlight rounded-xl shadow-md p-3 px-4 hover:bg-green-800 whitespace-nowrap text-white">Search
                             Book</button>
                     </form>
                 </div>
