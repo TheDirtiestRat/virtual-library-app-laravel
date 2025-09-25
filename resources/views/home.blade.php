@@ -37,10 +37,17 @@
 
             {{-- login card --}}
             <div class="flex flex-col md:flex-row gap-4">
-                <a href="{{ url('/login') }}"
+                <a href="{{ url('/students') }}"
                     class="flex-1 bg-paper rounded-2xl shadow-lg p-6 flex items-center justify-center gap-2 text-center
                        transition hover:-translate-y-1 hover:shadow-xl">
-                    <i class="bi bi-book text-2xl text-gray-700"></i>
+                    <i class="bi bi-person text-2xl text-ink"></i>
+                    <span class="text-xl font-semibold text-gray-800">Manage Students</span>
+                </a>
+
+                <a href="{{ url('/login') }}"
+                    class="basis-auto bg-paper rounded-2xl shadow-lg p-6 flex items-center justify-center gap-2 text-center
+                       transition hover:-translate-y-1 hover:shadow-xl">
+                    <i class="bi bi-box-arrow-in-right"></i>
                     <span class="text-xl font-semibold text-gray-800">Login</span>
                 </a>
 

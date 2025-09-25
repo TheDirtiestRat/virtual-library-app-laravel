@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use \App\Models\Book;
+use \App\Models\Student;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -25,5 +26,8 @@ class DatabaseSeeder extends Seeder
 
         // create random books
         Book::factory(150)->create();
+
+        // create random students
+        Student::factory(550)->create();
     }
 }

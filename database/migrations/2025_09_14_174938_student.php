@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('last_name');
             $table->string('course')->nullable();
             $table->enum('year_level', ['1st Year', '2nd Year', '3rd Year', '4th Year']);
-            $table->enum('section', ['A', 'B', 'C', 'D', 'E'])->nullable();
+            $table->enum('section', ['A', 'B', 'C', 'D', 'E', 'F', 'G'])->nullable();
 
             $table->enum('gender', ['male', 'female', 'other']);
             $table->string('date_of_birth')->nullable();

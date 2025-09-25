@@ -15,7 +15,7 @@
 </head>
 
 <body class="bg-paper">
-    <div >
+    <div>
         <!-- Simplicity is the consequence of refined emotions. - Jean D'Alembert -->
         @yield('content')
     </div>
