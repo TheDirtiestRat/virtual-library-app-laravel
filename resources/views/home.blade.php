@@ -6,10 +6,10 @@
         <div class="w-full max-w-3xl flex flex-col gap-4">
             <!-- Welcome Card -->
             <div
-                class="bg-orange-200 rounded-2xl shadow-lg p-8 flex flex-col justify-center items-center text-center">
+                class="bg-paper rounded-2xl shadow-lg p-8 flex flex-col justify-center items-center text-center">
                 <h1 class="text-3xl font-bold text-gray-800">Welcome to</h1>
                 <div class="mt-2">
-                    @include('components.title')
+                    <h1 class="text-4xl font-semibold">ACLC Virtual Library</h1>
                 </div>
                 <p class="mt-4 text-gray-600 text-sm">
                     Manage and explore your collection with ease.
@@ -19,16 +19,16 @@
             <!-- Actions -->
             <div class="flex flex-col md:flex-row gap-4">
                 <a href="{{ url('/books') }}"
-                    class="bg-orange-200 flex-1 bg-paper rounded-2xl shadow-lg p-6 flex items-center justify-center gap-2 text-center
+                    class="flex-1 bg-paper rounded-2xl shadow-lg p-6 flex items-center justify-center gap-2 text-center
                        transition hover:-translate-y-1 hover:shadow-xl">
                     <i class="bi bi-book text-2xl text-gray-700"></i>
                     <span class="text-xl font-semibold text-gray-800">Browse Books</span>
                 </a>
 
                 <a href="{{ url('/books/manage') }}"
-                    class="bg-orange-200 flex-1 bg-paper rounded-2xl shadow-lg p-6 flex items-center justify-center gap-2 text-center
+                    class="flex-1 bg-paper rounded-2xl shadow-lg p-6 flex items-center justify-center gap-2 text-center
                        transition hover:-translate-y-1 hover:shadow-xl">
-                    <i class="bi bi-gear text-2xl text-gray-700"></i>
+                    <i class="bi bi-gear text-2xl text-ink"></i>
                     <span class="text-xl font-semibold text-gray-800">Manage Books</span>
                 </a>
 
@@ -37,7 +37,7 @@
             <div
                 class="text-shadow flex flex-col justify-center items-center text-center">
                 <p class="text-gray-200 text-sm">
-                    @ Develop by Programmers Guild
+                    @ Developed by Programmers Guild
                 </p>
             </div>
         </div>

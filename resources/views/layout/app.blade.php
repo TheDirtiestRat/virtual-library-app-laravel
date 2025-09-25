@@ -14,7 +14,7 @@
     @endif
 </head>
 
-<body class="bg-gray-200">
+<body class="bg-paper">
     <div >
         <!-- Simplicity is the consequence of refined emotions. - Jean D'Alembert -->
         @yield('content')

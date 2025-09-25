@@ -3,7 +3,7 @@
 @section('content')
     <div class="p-4 h-full lg:h-screen w-full">
         <div class="basis-full flex flex-col gap-4 h-full w-full">
-            <div class="bg-white rounded-xl shadow p-4 basis-auto flex flex-row justify-between items-center">
+            <div class="bg-amber-50 rounded-xl shadow p-4 basis-auto flex flex-row justify-between items-center">
                 <div class="">
                     <h1 class="text-2xl font-semibold">
                         @yield('title-Page')
@@ -14,7 +14,9 @@
                 </div>
 
                 <a href="{{ url('/books/manage') }}"
-                    class="shadow rounded-xl p-3 hover:bg-gray-100 focus:outline-2 basis-auto">Back</a>
+                    class="px-4 py-2 rounded-lg border border-gray-200 shadow-sm bg-highlight hover:bg-green-800 transition text-white text-sm font-medium">
+                    ← Back
+                </a>
             </div>
             <div class="h-full basis-full flex flex-row gap-4">
                 {{-- content --}}
@@ -27,8 +29,8 @@
 
         <script type="module">
             // check if isbn exists in the database
-            $(document).ready(function() {
-                $('#isbn-exists').click(function() {
+            $(document).ready(function () {
+                $('#isbn-exists').click(function () {
                     let isbn = $('#isbn').val().trim();
                     if (isbn === '') {
                         confirmAction("Please enter an ISBN number.", "Error");
@@ -39,7 +41,7 @@
                     $.ajax({
                         url: '{{ url('/books/api/') }}/' + isbn,
                         method: 'GET',
-                        success: function(response) {
+                        success: function (response) {
                             // console.log(response)
                             if (response.totalItems == 0) {
                                 confirmAction("The listed ISBN is not listed in the online database or Invalid ISBN entered.", "Error");
@@ -54,7 +56,7 @@
 
                             // console.log(response.items[0]);
                         },
-                        error: function() {
+                        error: function () {
                             // alert('Error checking ISBN. Please try again later.');
                             confirmAction("Error checking ISBN. Please try again later.", "Error");
                         }
@@ -102,11 +104,11 @@
                     ' ');
             }
 
-            $('#publication_date').change(function() {
+            $('#publication_date').change(function () {
                 var inputValue = $(this).val();
                 console.log('Input value changed to: ' + inputValue);
                 // Perform other actions here
             });
         </script>
         <!-- Simplicity is the essence of happiness. - Cedric Bledsoe -->
-    @endsection
+@endsection
