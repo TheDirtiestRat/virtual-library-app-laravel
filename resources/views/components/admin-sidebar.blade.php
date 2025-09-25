@@ -6,26 +6,26 @@
         </div>
     </div>
     {{-- Admin Options --}}
+    <a href="{{ url('/books/manage/addBook') }}"
+        class="shadow rounded-xl p-3 bg-parchment hover:bg-gray-100 focus:outline-2 transition font-medium">
+        <i class="bi bi-plus-circle pr-2"></i>
+        Add Book
+    </a>
 
     <form action="{{ route('import-book.csv') }}" method="POST" enctype="multipart/form-data"
         class="flex flex-col gap-2">
         @csrf
-        <input type="file" name="csv_file" accept=".csv" class="shadow border border-gray-200 bg-amber-50 p-2 rounded-lg text-sm cursor-pointer
-                  file:mr-2 file:rounded-md file:border-0 file:bg-amber-100 file:px-3 file:py-1
+
+        <input type="file" name="csv_file" accept=".csv"
+            class="shadow cursor-pointer rounded-xl
+                  file:mr-2 file:border-0 file:bg-amber-100 file:p-2 file:px-4 file:rounded-s-xl
                   hover:border-gray-300 focus:outline-2 w-full">
 
-        <div class="flex flex-row gap-2">
-            <button type="submit"
-                class="flex-1 bg-highlight text-white px-4 py-2 rounded-lg shadow hover:bg-green-800 transition text-sm">
-                <i class="bi bi-upload pr-1"></i>
-                Import CSV
-            </button>
-            <a href="{{ url('/books/manage/addBook') }}"
-                class="flex-1 shadow rounded-lg px-4 py-2 text-sm text-center bg-highlight text-white hover:bg-green-800 transition font-medium">
-                <i class="bi bi-plus-circle pr-2"></i>
-                Add Book
-            </a>
-        </div>
+        <button type="submit"
+            class="shadow rounded-xl p-3 bg-parchment hover:bg-gray-100 focus:outline-2 transition text-sm">
+            <i class="bi bi-upload pr-1"></i>
+            Import CSV
+        </button>
     </form>
 
 
@@ -37,7 +37,7 @@
                 <p class="text-gray-500 italic">No Categories</p>
             @else
                 @foreach ($categories as $category)
-                    <a href="{{ url('/books/category/'.$category->categories.'/'. true) }}"
+                    <a href="{{ url('/books/category/' . $category->categories . '/' . true) }}"
                         class="shadow rounded-xl p-3 bg-parchment hover:bg-gray-100 focus:outline-2 basis-auto">
                         {{ $category->categories }}</a>
                     {{-- <button

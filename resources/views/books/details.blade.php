@@ -20,9 +20,10 @@
             <div class="flex flex-row gap-6 h-full w-full">
                 <!-- Left Sidebar (Book Cover & Basic Info) -->
                 <div class="bg-amber-50 rounded-xl shadow p-4 flex flex-col gap-3 w-[320px] shrink-0">
+                    {{-- dont change the cover image size it needs to be full to view it --}}
                     <img src="{{ asset('storage/book-covers/' . $book->thumbnail) }}" alt="Book Cover"
-                        class="w-full h-80 object-cover rounded-lg shadow-sm"
-                        onerror="this.onerror=null;this.src='{{ asset('storage/images/book-cover-placeholder.jpeg') }}';" />
+                        class="w-full h-auto object-cover rounded-lg shadow-sm"
+                        onerror="this.onerror=null;this.src='{{ asset('storage/images/book-cover-placeholder.png') }}';" />
 
                     <div class="flex flex-col gap-1">
                         <h2 class="text-lg font-semibold">{{ $book->title }}</h2>

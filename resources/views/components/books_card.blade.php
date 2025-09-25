@@ -3,8 +3,8 @@
 <div class="bg-parchment rounded-xl shadow-md p-4 flex flex-col gap-1">
     <!-- Book Cover -->
     <img src="{{ asset('storage/book-covers/' . $coverImage) }}" alt="Book Cover for {{ $title }}"
-        class="w-full h-48 object-cover rounded-lg shadow-sm"
-        onerror="this.onerror=null;this.src='{{ asset('storage/images/book-cover-placeholder.jpeg') }}';" />
+        class="w-full h-auto object-cover rounded-lg shadow-sm"
+        onerror="this.onerror=null;this.src='{{ asset('storage/images/book-cover-placeholder.png') }}';" />
 
 
     <!-- Book Info -->

@@ -28,11 +28,11 @@
                     <table class="min-w-full table-auto">
                         <thead>
                             <tr>
-                                <th class="px-4 py-2 bg-bookmark text-white rounded-s-xl">ID</th>
-                                <th class="px-4 py-2 bg-bookmark text-white">Title</th>
-                                <th class="px-4 py-2 bg-bookmark text-white">Author</th>
-                                <th class="px-4 py-2 bg-bookmark text-white">Copies</th>
-                                <th class="px-4 py-2 bg-bookmark text-white rounded-e-xl">Actions</th>
+                                <th class="px-4 py-2 bg-highlight text-white rounded-s-xl">ID</th>
+                                <th class="px-4 py-2 bg-highlight text-white">Title</th>
+                                <th class="px-4 py-2 bg-highlight text-white">Author</th>
+                                <th class="px-4 py-2 bg-highlight text-white">Copies</th>
+                                <th class="px-4 py-2 bg-highlight text-white rounded-e-xl">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
