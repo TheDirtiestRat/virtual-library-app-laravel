@@ -17,11 +17,13 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         User::factory()->create([
-            'name' => 'Test User',
+            'name' => 'testUser',
             'email' => 'test@example.com',
+            'email_verified_at' => now(),
+            'password' => 'user',
         ]);
 
         // create random books
-        Book::factory(50)->create();
+        Book::factory(150)->create();
     }
 }

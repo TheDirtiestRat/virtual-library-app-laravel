@@ -1,4 +1,9 @@
 <div class="h-full min-w-[280px] flex flex-col gap-3">
+    {{-- back btn --}}
+    <a href="{{ url('/') }}"
+        class="shadow rounded-xl p-3 bg-parchment hover:bg-gray-100 focus:outline-2 basis-auto">
+        <i class="bi bi-house"></i>
+        Home</a>
     <div class="bg-amber-50 rounded-xl shadow p-4 relative">
         {{-- ther is a reason why this is offcenter --}}
         <div class="flex flex-col items-center justify-center">
@@ -30,7 +35,7 @@
     </form>
 
 
-    <div class="flex flex-col gap-2 overflow-y-auto px-1">
+    <div class="flex flex-col gap-2 overflow-y-auto px-1 basis-full">
         <h1 class="text-xl font-semibold">Categories</h1>
 
         @isset($categories)
@@ -59,8 +64,14 @@
         --}}
     </div>
 
-    <a href="{{ url('/') }}"
-        class="shadow rounded-xl text-white font-medium p-3 bg-highlight hover:bg-green-800 focus:outline-2 basis-auto">
-        <i class="bi bi-arrow-left-circle-fill pr-2"></i>
-        Back Home</a><!-- Walk as if you are kissing the Earth with your feet. - Thich Nhat Hanh -->
+    
+    <form action="{{ url('logoutuser') }}" method="POST">
+        @csrf
+        <button type="submit"
+            class="shadow rounded-xl text-white font-medium p-3 bg-highlight hover:bg-green-800 focus:outline-2 w-full text-start">
+            <i class="bi bi-power"></i> LogOut
+        </button>
+    </form>
+
+    <!-- Walk as if you are kissing the Earth with your feet. - Thich Nhat Hanh -->
 </div>

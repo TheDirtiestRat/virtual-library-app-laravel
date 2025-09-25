@@ -18,8 +18,8 @@ class BookFactory extends Factory
     {
         return [
             //
-            'title' => fake()->sentence(6),
-            'subtitle' => fake()->sentence(3),
+            'title' => fake()->jobTitle(),
+            'subtitle' => fake()->jobTitle(),
             'authors' => fake()->name(),
             'publisher' => fake()->name(),
             'publishedDate' => fake()->date(),
@@ -27,7 +27,7 @@ class BookFactory extends Factory
             'available_copies' => fake()->numberBetween(1, 10),
             
             'pageCount' => fake()->numberBetween(100, 1000),
-            'categories' => fake()->word(),
+            'categories' => fake()->randomElement(['Education', 'Technology', 'Research', 'Time']),
 
             'thumbnail' => fake()->imageUrl(),
             'previewLink' => fake()->url(),

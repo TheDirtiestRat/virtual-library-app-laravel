@@ -4,9 +4,10 @@
     <div class="min-h-screen w-full flex items-center justify-center p-6 bg-cover bg-center bg-blend-multiply bg-gray-500"
         style="background-image: url('{{ asset('storage/images/bg-library.jpeg') }}')">
         <div class="w-full max-w-3xl flex flex-col gap-4">
+
+
             <!-- Welcome Card -->
-            <div
-                class="bg-paper rounded-2xl shadow-lg p-8 flex flex-col justify-center items-center text-center">
+            <div class="bg-paper rounded-2xl shadow-lg p-8 flex flex-col justify-center items-center text-center">
                 <h1 class="text-3xl font-bold text-gray-800">Welcome to</h1>
                 <div class="mt-2">
                     <h1 class="text-4xl font-semibold">ACLC Virtual Library</h1>
@@ -34,8 +35,29 @@
 
             </div>
 
-            <div
-                class="text-shadow flex flex-col justify-center items-center text-center">
+            {{-- login card --}}
+            <div class="flex flex-col md:flex-row gap-4">
+                <a href="{{ url('/login') }}"
+                    class="flex-1 bg-paper rounded-2xl shadow-lg p-6 flex items-center justify-center gap-2 text-center
+                       transition hover:-translate-y-1 hover:shadow-xl">
+                    <i class="bi bi-book text-2xl text-gray-700"></i>
+                    <span class="text-xl font-semibold text-gray-800">Login</span>
+                </a>
+
+                {{-- this will only display when a user is login --}}
+                @auth
+                    <form action="{{ url('logoutuser') }}" method="POST">
+                        @csrf
+                        <button type="submit"
+                            class="flex-1 bg-paper rounded-2xl shadow-lg p-6 flex items-center justify-center gap-2 text-center
+                       transition hover:-translate-y-1 hover:shadow-xl h-full">
+                            <i class="bi bi-power"></i> LogOut
+                        </button>
+                    </form>
+                @endauth
+            </div>
+
+            <div class="text-shadow flex flex-col justify-center items-center text-center">
                 <p class="text-gray-200 text-sm">
                     @ Developed by Programmers Guild
                 </p>

@@ -193,6 +193,8 @@ class BookController extends Controller
         $categories = Book::select('categories')->distinct()->get();
         $all_books = Book::count();
 
+        // dd("manage is open");
+
         return view('books.manage', compact('books', 'categories', 'all_books'));
     }
 
