@@ -7,7 +7,7 @@
         </div>
     </div>
 
-    <a href="{{ url('/books/category/') }}"
+    <a href="{{ url('/students/add') }}"
         class="shadow rounded-xl p-3 bg-parchment hover:bg-gray-200 focus:outline-2 basis-auto">
         Add new Student
     </a>
