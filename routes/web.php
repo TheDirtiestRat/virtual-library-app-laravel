@@ -20,8 +20,9 @@ Route::post('/logoutuser', [LoginController::class, 'logout']);
 
 // student routs
 Route::get('/students', [StudentController::class, 'list']);
+Route::get('/students/add', [StudentController::class, 'create']); // For getting the form
+Route::post('/students/store', [StudentController::class, 'store']); // Creating the student
 
-// only login user can access
 Route::middleware(['auth'])->group(function () {
     Route::get('/success_login', function () {
         return view('authentication.success');
