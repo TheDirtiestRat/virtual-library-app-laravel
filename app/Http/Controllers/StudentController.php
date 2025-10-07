@@ -8,7 +8,7 @@ use App\Models\Student;
 
 class StudentController extends Controller
 {
-    // manage functions
+    // Display all students
     public function list(): View
     {
         $students = Student::latest()->paginate(100);
@@ -18,26 +18,41 @@ class StudentController extends Controller
         return view('students.list', compact('students', 'courses', 'all_students'));
     }
 
+    // Show the form for creating a new student
     public function create(): View
     {
         return view("students.create");
     }
 
+    // Store a newly created student in the database
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'first_name' => 'required|string|max:50',
-            'last_name' => 'required|string|max:50',
-            'course' => 'required|string|max:50',
-            'year_level' => 'required|integer',
-            'section' => 'required|string|max:50',
-            'gender' => 'required|string',
-            'date_of_birth' => 'required|date',
-            'address' => 'required|string',
-            'email' => 'required|email|unique:students,email',
+            // Identifiers
+            'student_id'    => 'required|string|max:50|unique:students,student_id',
+
+            // Personal info
+            'first_name'    => 'required|string|max:50',
+            'middle_name'   => 'nullable|string|max:50',
+            'last_name'     => 'required|string|max:50',
+            'gender'        => 'required|in:male,female,other',
+            'date_of_birth' => 'nullable|date',
+
+            // Academic info
+            'course'        => 'required|string|max:100',
+            'year_level'    => 'required|in:Grade 11,Grade 12,1st Year,2nd Year,3rd Year,4th Year',
+            'section'       => 'required|string|max:50',
+
+            // Contact info
+            'address'       => 'nullable|string|max:255',
+            'phone'         => 'nullable|string|max:20',
+            'email'         => 'nullable|email|unique:students,email',
         ]);
 
         Student::create($validated);
-        return redirect()->back()->with('success', 'Student added successfully!');
+
+        return redirect()
+            ->back()
+            ->with('success', 'Student added successfully!');
     }
 }
