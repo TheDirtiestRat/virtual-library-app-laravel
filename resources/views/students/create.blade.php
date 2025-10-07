@@ -1,6 +1,5 @@
 @extends('students.layout.student')
 
-
 @section('title-Page')
     Add New Student
 @endsection
@@ -13,95 +12,120 @@
     <form method="POST" action="{{ url('/students/store') }}" class="h-full basis-full flex flex-row gap-4"
         enctype="multipart/form-data">
         @csrf
-        <div class="bg-amber-50 rounded-xl p-4 basis-full">
-            <div class="basis-full grid grid-cols-3 gap-2 h-full">
 
-                {{-- Student Name --}}
-                <div class="col-span-1">
-                    <label for="first_name">First Name <span class="text-red-400">*</span></label>
-                    <input type="text" name="first_name" id="first_name" placeholder="First Name"
-                        class="w-full p-2 bg-white border border-gray-300 rounded-xl" required />
+        <div class="bg-amber-50 rounded-xl p-6 basis-full space-y-6">
+            {{-- STUDENT ID --}}
+            <div>
+                <label for="student_id" class="font-medium">Student ID (USN or LRN) <span class="text-red-400">*</span></label>
+                <input type="text" name="student_id" id="student_id" placeholder="USN or LRN"
+                    class="w-full mt-1 p-2 bg-white border border-gray-300 rounded-xl" required />
+            </div>
+
+            {{-- NAME GROUP --}}
+            <div>
+                <h2 class="font-semibold text-lg mb-2">Full Name</h2>
+                <div class="grid grid-cols-3 gap-3">
+                    <div>
+                        <label for="first_name">First Name <span class="text-red-400">*</span></label>
+                        <input type="text" name="first_name" id="first_name" placeholder="First Name"
+                            class="w-full p-2 bg-white border border-gray-300 rounded-xl" required />
+                    </div>
+
+                    <div>
+                        <label for="middle_name">Middle Name</label>
+                        <input type="text" name="middle_name" id="middle_name" placeholder="Middle Name"
+                            class="w-full p-2 bg-white border border-gray-300 rounded-xl" />
+                    </div>
+
+                    <div>
+                        <label for="last_name">Last Name <span class="text-red-400">*</span></label>
+                        <input type="text" name="last_name" id="last_name" placeholder="Last Name"
+                            class="w-full p-2 bg-white border border-gray-300 rounded-xl" required />
+                    </div>
                 </div>
+            </div>
 
-                <div class="col-span-1">
-                    <label for="middle_name">Middle Name</label>
-                    <input type="text" name="middle_name" id="middle_name" placeholder="Middle Name"
-                        class="w-full p-2 bg-white border border-gray-300 rounded-xl" />
-                </div>
-
-                <div class="col-span-1">
-                    <label for="last_name">Last Name <span class="text-red-400">*</span></label>
-                    <input type="text" name="last_name" id="last_name" placeholder="Last Name"
-                        class="w-full p-2 bg-white border border-gray-300 rounded-xl" required />
-                </div>
-
-                {{-- Course, Year, Section --}}
-                <div class="col-span-1">
-                    <label for="course">Course <span class="text-red-400">*</span></label>
-                    <input type="text" name="course" id="course" placeholder="Course"
-                        class="w-full p-2 bg-white border border-gray-300 rounded-xl" required />
-                </div>
-
-                <div class="col-span-1">
-                    <label for="year_level">Year Level <span class="text-red-400">*</span></label>
-                    <select name="year_level" id="year_level" class="w-full p-2 bg-white border border-gray-300 rounded-xl"
-                        required>
-                        <option value="" disabled selected>Select Year</option>
-                        <option value="1">Grade 11</option>
-                        <option value="1">Grade 12</option>
-                        <option value="1">1st Year</option>
-                        <option value="2">2nd Year</option>
-                        <option value="3">3rd Year</option>
-                        <option value="4">4th Year</option>
-                    </select>
-                </div>
-
-                <div class="col-span-1">
-                    <label for="section">Section <span class="text-red-400">*</span></label>
-                    <input type="text" name="section" id="section" placeholder="Section"
-                        class="w-full p-2 bg-white border border-gray-300 rounded-xl" required />
-                </div>
-
-                {{-- Gender and DOB --}}
-                <div class="col-span-1">
+            {{-- PERSONAL INFO --}}
+            <div class="grid grid-cols-2 gap-3">
+                <div>
                     <label for="gender">Gender <span class="text-red-400">*</span></label>
-                    <select name="gender" id="gender" class="w-full p-2 bg-white border border-gray-300 rounded-xl"
-                        required>
+                    <select name="gender" id="gender" class="w-full p-2 bg-white border border-gray-300 rounded-xl" required>
                         <option value="" disabled selected>Select Gender</option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                        <option value="Other">Other</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
                     </select>
                 </div>
 
-                <div class="col-span-1">
-                    <label for="date_of_birth">Date of Birth <span class="text-red-400">*</span></label>
+                <div>
+                    <label for="date_of_birth">Date of Birth</label>
                     <input type="date" name="date_of_birth" id="date_of_birth"
-                        class="w-full p-2 bg-white border border-gray-300 rounded-xl" required />
-                </div>
-
-                {{-- Contact Info --}}
-                <div class="col-span-full">
-                    <label for="address">Address <span class="text-red-400">*</span></label>
-                    <textarea name="address" id="address" rows="3" placeholder="Address"
-                        class="w-full p-2 bg-white border border-gray-300 rounded-xl" required></textarea>
-                </div>
-
-                <div class="col-span-1">
-                    <label for="phone">Phone Number</label>
-                    <input type="text" name="phone" id="phone" placeholder="Phone Number"
                         class="w-full p-2 bg-white border border-gray-300 rounded-xl" />
                 </div>
+            </div>
 
-                <div class="col-span-2">
-                    <label for="email">Email <span class="text-red-400">*</span></label>
-                    <input type="email" name="email" id="email" placeholder="Email Address"
-                        class="w-full p-2 bg-white border border-gray-300 rounded-xl" required />
+            {{-- ACADEMIC INFO --}}
+            <div>
+                <h2 class="font-semibold text-lg mb-2">Academic Information</h2>
+                <div class="grid grid-cols-3 gap-3">
+                    <div>
+                        <label for="course">Course <span class="text-red-400">*</span></label>
+                        <input type="text" name="course" id="course" placeholder="e.g. BSCS"
+                            class="w-full p-2 bg-white border border-gray-300 rounded-xl" required />
+                    </div>
+
+                    <div>
+                        <label for="year_level">Year Level <span class="text-red-400">*</span></label>
+                        <select name="year_level" id="year_level"
+                            class="w-full p-2 bg-white border border-gray-300 rounded-xl" required>
+                            <option value="" disabled selected>Select Year</option>
+                            <option value="Grade 11">Grade 11</option>
+                            <option value="Grade 12">Grade 12</option>
+                            <option value="1st Year">1st Year</option>
+                            <option value="2nd Year">2nd Year</option>
+                            <option value="3rd Year">3rd Year</option>
+                            <option value="4th Year">4th Year</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="section">Section <span class="text-red-400">*</span></label>
+                        <input type="text" name="section" id="section" placeholder="Section"
+                            class="w-full p-2 bg-white border border-gray-300 rounded-xl" required />
+                    </div>
                 </div>
+            </div>
 
-                {{-- Submit --}}
+            {{-- CONTACT INFO --}}
+            <div>
+                <h2 class="font-semibold text-lg mb-2">Contact Information</h2>
+                <div class="space-y-3">
+                    <div>
+                        <label for="address">Address</label>
+                        <textarea name="address" id="address" rows="3" placeholder="Address"
+                            class="w-full p-2 bg-white border border-gray-300 rounded-xl"></textarea>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label for="phone">Phone Number</label>
+                            <input type="text" name="phone" id="phone" placeholder="Phone Number"
+                                class="w-full p-2 bg-white border border-gray-300 rounded-xl" />
+                        </div>
+
+                        <div>
+                            <label for="email">Email</label>
+                            <input type="email" name="email" id="email" placeholder="Email Address"
+                                class="w-full p-2 bg-white border border-gray-300 rounded-xl" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{-- SUBMIT --}}
+            <div class="pt-4">
                 <button type="submit"
-                    class="bg-highlight text-md font-semibold text-white hover:bg-green-800 shadow-md border border-gray-200 p-3 rounded-xl col-span-full">
+                    class="bg-highlight w-full text-md font-semibold text-white hover:bg-green-800 shadow-md border border-gray-200 p-3 rounded-xl">
                     Add Student
                 </button>
             </div>
