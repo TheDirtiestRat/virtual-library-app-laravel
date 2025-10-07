@@ -12,7 +12,7 @@ return new class extends Migration {
     {
         Schema::create('students', function (Blueprint $table) {
             // Student ID (USN, or LRN)
-            $table->string('student_id')->primary();
+            $table->string('id')->primary();
 
             // Personal Info
             $table->string('first_name');

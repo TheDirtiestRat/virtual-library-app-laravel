@@ -29,7 +29,7 @@ class StudentController extends Controller
     {
         $validated = $request->validate([
             // Identifiers
-            'student_id'    => 'required|string|max:50|unique:students,student_id',
+            'id' => 'required|string|max:50|unique:students,id',
 
             // Personal info
             'first_name'    => 'required|string|max:50',

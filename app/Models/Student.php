@@ -9,13 +9,13 @@ class Student extends Model
 {
     use HasFactory;
 
-    // Primary key is 'student_id' (string, not auto-incrementing)
-    protected $primaryKey = 'student_id';
+    // Primary key is 'id' (string, not auto-incrementing)
+    protected $primaryKey = 'id';
     public $incrementing = false;
     protected $keyType = 'string';
 
     protected $fillable = [
-        'student_id',
+        'id',
         'first_name',
         'middle_name',
         'last_name',
