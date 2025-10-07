@@ -1,10 +1,10 @@
 @extends('students.layout.student')
 
-@section('title-Page')
+@section('page-title')
     Add New Student
 @endsection
 
-@section('page-Description')
+@section('page-description')
     Register a new student to borrow books
 @endsection
 

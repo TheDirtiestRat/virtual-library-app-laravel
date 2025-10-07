@@ -7,10 +7,10 @@
             <div class="bg-amber-50 rounded-xl shadow p-4 basis-auto flex flex-row justify-between items-center">
                 <div>
                     <h1 class="text-2xl font-semibold">
-                        @yield('title-Page')
+                        @yield('page-title')
                     </h1>
                     <p class="text-gray-600">
-                        @yield('page-Description')
+                        @yield('page-description')
                     </p>
                 </div>
 
