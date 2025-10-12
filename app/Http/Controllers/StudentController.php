@@ -52,7 +52,7 @@ class StudentController extends Controller
         Student::create($validated);
 
         return redirect()
-            ->back()
+            ->route("students.list")
             ->with('success', 'Student added successfully!');
     }
     public function edit(string $id)
