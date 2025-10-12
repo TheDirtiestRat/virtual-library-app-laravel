@@ -109,9 +109,7 @@ class StudentController extends Controller
                 $q->where('id', 'like', '%' . $query . '%')
                     ->orWhere('first_name', 'like', '%' . $query . '%')
                     ->orWhere('middle_name', 'like', '%' . $query . '%')
-                    ->orWhere('last_name', 'like', '%' . $query . '%')
-                    ->orWhere('course', 'like', '%' . $query . '%')
-                    ->orWhere('email', 'like', '%' . $query . '%');
+                    ->orWhere('last_name', 'like', '%' . $query . '%');
             })
                 ->paginate(50);
         } else {
