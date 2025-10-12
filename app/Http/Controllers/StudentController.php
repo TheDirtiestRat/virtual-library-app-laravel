@@ -61,7 +61,7 @@ class StudentController extends Controller
         return view('students.edit', compact('student'));
     }
 
-    public function update(Request $request, Student $student)
+    public function update(Request $request, string $id)
     {
         $validated = $request->validate([
             // Identifiers
@@ -82,9 +82,10 @@ class StudentController extends Controller
             // Contact info
             'address' => 'nullable|string|max:255',
             'phone' => 'nullable|string|max:20',
-            'email' => 'nullable|email|unique:students,email',
+            'email' => 'nullable|email|unique:students,email,' . $id,
         ]);
 
+        $student = Student::findOrFail($id);
         $student->update($validated);
 
         return redirect()->route('students.list')->with('success', 'Student updated successfully!');
