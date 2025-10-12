@@ -121,4 +121,12 @@ class StudentController extends Controller
         return view('students.list', compact('students', 'courses', 'all_students'));
     }
 
+    public function filterStudentsByCourse(string $course)
+    {
+        $students = Student::where('course', $course)->paginate(50);
+        $courses = Student::select('course')->distinct()->get();
+        $all_students = Student::count();
+
+        return view('students.list', compact('students', 'courses', 'all_students'));
+    }
 }
