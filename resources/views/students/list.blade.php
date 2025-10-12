@@ -11,7 +11,7 @@
                 <thead>
                     <tr>
                         <th class="px-4 py-2 bg-highlight text-white rounded-s-xl">ID</th>
-                        <th class="px-4 py-2 bg-highlight text-white">Fullname</th>
+                        <th class="px-4 py-2 bg-highlight text-white">Full Name</th>
                         <th class="px-4 py-2 bg-highlight text-white">Course</th>
                         <th class="px-4 py-2 bg-highlight text-white">Year</th>
                         <th class="px-4 py-2 bg-highlight text-white">Gender</th>
@@ -21,14 +21,14 @@
                 <tbody>
                     @foreach ($students as $student)
                         <tr class="hover:bg-amber-100 border-b border-gray-200">
-                            <td class="px-4 py-2 truncate">{{ $student->student_id }}</td>
-                            <td class="px-4 py-2 ">{{ $student->first_name }}, {{ $student->middle_name }}
-                                {{ $student->last_name }}</td>
-                            <td class="px-4 py-2 ">{{ $student->course }}</td>
+                            <td class="px-4 py-2 truncate">{{ $student->id }}</td>
+                            <td class="px-4 py-2 ">{{ $student->first_name }}
+                                {{ $student->middle_name[0] }}.{{ $student->last_name }}</td>
+                            <td class="px-4 py-2">{{ $student->course }}</td>
                             <td class="px-4 py-2 text-center">{{ $student->year_level }}</td>
-                            <td class="px-4 py-2 text-center">{{ $student->gender }}</td>
+                            <td class="px-4 py-2 text-center">{{ ucfirst(strtolower($student->gender)) }}</td>
                             <td class="px-4 py-2 w-1/6 text-center">
-                                <a href="{{ url('/books/manage/editBookInfo/' . $student->id) }}"
+                                <a href="{{ url('/students/' . $student->id . '/edit') }}"
                                     class="text-gray-500 hover:underline">Edit</a>
                             </td>
                         </tr>
