@@ -23,7 +23,7 @@
                         <tr class="hover:bg-amber-100 border-b border-gray-200">
                             <td class="px-4 py-2 truncate">{{ $student->id }}</td>
                             <td class="px-4 py-2 ">{{ $student->first_name }}
-                                {{ $student->middle_name[0] }}.{{ $student->last_name }}</td>
+                                {{ $student->middle_name[0] }}. {{ $student->last_name }}</td>
                             <td class="px-4 py-2">{{ $student->course }}</td>
                             <td class="px-4 py-2 text-center">{{ $student->year_level }}</td>
                             <td class="px-4 py-2 text-center">{{ ucfirst(strtolower($student->gender)) }}</td>
@@ -41,5 +41,7 @@
             {{ $students->links('vendor.pagination.my-custom-pagination') }}
         </div>
         <!-- The biggest battle is the war against ignorance. - Mustafa Kemal Atatürk -->
+
+        @include('components.alert')
     </div>
 @endsection
