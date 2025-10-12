@@ -100,4 +100,27 @@ class StudentController extends Controller
         return redirect()->route('students.list')->with('success', 'Student deleted successfully!');
     }
 
+    public function search(Request $request)
+    {
+        $query = $request->input('search');
+
+        if ($query) {
+            $students = Student::where(function ($q) use ($query) {
+                $q->where('id', 'like', '%' . $query . '%')
+                    ->orWhere('first_name', 'like', '%' . $query . '%')
+                    ->orWhere('middle_name', 'like', '%' . $query . '%')
+                    ->orWhere('last_name', 'like', '%' . $query . '%')
+                    ->orWhere('course', 'like', '%' . $query . '%')
+                    ->orWhere('email', 'like', '%' . $query . '%');
+            })
+                ->paginate(50);
+        } else {
+            $students = Student::paginate(50);
+        }
+        $courses = Student::select('course')->distinct()->get();
+        $all_students = Student::count();
+
+        return view('students.list', compact('students', 'courses', 'all_students'));
+    }
+
 }
