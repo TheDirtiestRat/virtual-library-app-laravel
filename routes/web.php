@@ -18,11 +18,6 @@ Route::get('/login', function () {
 Route::post('/loginuser', [LoginController::class, 'authenticate']);
 Route::post('/logoutuser', [LoginController::class, 'logout']);
 
-// student routs
-Route::get('/students', [StudentController::class, 'list']);
-Route::get('/students/add', [StudentController::class, 'create']); // For getting the form
-Route::post('/students/store', [StudentController::class, 'store']); // Creating the student
-
 Route::middleware(['auth'])->group(function () {
     Route::get('/success_login', function () {
         return view('authentication.success');
@@ -49,3 +44,12 @@ Route::get('/books/category/{category}/{is_manage}', [BookController::class, 'ge
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+
+// Student Routes
+Route::get('/students', [StudentController::class, 'list'])->name("students.list");
+
+Route::get('/students/add', [StudentController::class, 'create'])->name("students.create");
+Route::post('/students/store', [StudentController::class, 'store'])->name("students.store");
+
+Route::get('/students/{id}/edit', [StudentController::class, 'edit'])->name("students.edit");
+Route::put('/students/{id}/update', [StudentController::class, 'update'])->name("students.update");
