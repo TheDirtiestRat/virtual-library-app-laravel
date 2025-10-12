@@ -30,7 +30,7 @@ class StudentController extends Controller
     {
         $validated = $request->validate([
             // Identifiers
-            'id' => 'required|string|max:50|unique:students,id',
+            'id' => 'required|string|size:11|regex:/^[0-9]+$/|unique:students,id',
 
             // Personal info
             'first_name' => 'required|string|max:50',
@@ -66,7 +66,7 @@ class StudentController extends Controller
     {
         $validated = $request->validate([
             // Identifiers
-            'id' => 'required|string|max:50',
+            'id' => 'required|string|max:11|regex:/^[0-9]+$/',
 
             // Personal info
             'first_name' => 'required|string|max:50',
