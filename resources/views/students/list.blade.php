@@ -23,13 +23,23 @@
                         <tr class="hover:bg-amber-100 border-b border-gray-200">
                             <td class="px-4 py-2 truncate">{{ $student->id }}</td>
                             <td class="px-4 py-2 ">{{ $student->first_name }}
-                                {{ $student->middle_name[0] }}. {{ $student->last_name }}</td>
+                                {{ $student->middle_name[0] }}. {{ $student->last_name }}
+                            </td>
                             <td class="px-4 py-2">{{ $student->course }}</td>
                             <td class="px-4 py-2 text-center">{{ $student->year_level }}</td>
                             <td class="px-4 py-2 text-center">{{ ucfirst(strtolower($student->gender)) }}</td>
-                            <td class="px-4 py-2 w-1/6 text-center">
-                                <a href="{{ url('/students/' . $student->id . '/edit') }}"
-                                    class="text-gray-500 hover:underline">Edit</a>
+                            <td class="px-4 py-2 text-center flex flex-row gap-2 items-center justify-center">
+                                <a href="{{ route('students.edit', [$student->id]) }}"
+                                    class="text-teal-600 hover:underline">Edit</a>
+                                <form action="{{ route('students.delete', $student->id) }}" method="POST" class="inline"
+                                    onsubmit="return confirm('Are you sure you want to delete this student?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit"
+                                        class="text-red-400 hover:underline bg-transparent border-none p-0 m-0 cursor-pointer">
+                                        Delete
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach

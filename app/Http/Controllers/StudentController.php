@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Models\Student;
+use Illuminate\Console\View\Components\Confirm;
 
 class StudentController extends Controller
 {
@@ -90,4 +91,13 @@ class StudentController extends Controller
 
         return redirect()->route('students.list')->with('success', 'Student updated successfully!');
     }
+
+    public function delete($id)
+    {
+        $student = Student::findOrFail($id);
+        $student->delete();
+
+        return redirect()->route('students.list')->with('success', 'Student deleted successfully!');
+    }
+
 }
