@@ -25,7 +25,16 @@ Route::middleware(['auth'])->group(function () {
     });
 
     // student routes
-    Route::get('/students', [StudentController::class, 'list']);
+    // Route::get('/students', [StudentController::class, 'list']);
+    Route::get('/students', [StudentController::class, 'list'])->name("students.list");
+    Route::get('/students/add', [StudentController::class, 'create'])->name("students.create");
+    Route::post('/students/store', [StudentController::class, 'store'])->name("students.store");
+    Route::get('/students/{id}/edit', [StudentController::class, 'edit'])->name("students.edit");
+    Route::put('/students/{id}/update', [StudentController::class, 'update'])->name("students.update");
+    Route::delete('/students/{id}/delete', [StudentController::class, 'delete'])->name("students.delete");
+    Route::get('/students/search', [StudentController::class, 'search'])->name("students.search");
+    Route::get('/students/filter/{course}', [StudentController::class, 'filterStudentsByCourse'])->name('students.filter');
+    
     // book routes
     Route::get('/books/manage', [BookController::class, 'manage']);
     Route::get('/books/manage/addBook', [BookController::class, 'create']);
@@ -37,6 +46,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/import-book-csv', [BookController::class, 'import'])->name('import-book.csv');
 });
 
+// public routes
 Route::get('/books', [BookController::class, 'show']);
 Route::get('/books_search', [BookController::class, 'searchBook']);
 Route::get('/books/{id}', [BookController::class, 'details']);
