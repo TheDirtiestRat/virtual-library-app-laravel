@@ -23,7 +23,7 @@
                     {{-- dont change the cover image size it needs to be full to view it --}}
                     <img src="{{ asset('storage/book-covers/' . $book->thumbnail) }}" alt="Book Cover"
                         class="w-full h-auto object-cover rounded-lg shadow-sm"
-                        onerror="this.onerror=null;this.src='{{ asset('storage/images/book-cover-placeholder.png') }}';" />
+                        onerror="this.onerror=null;this.src='{{ asset('img/book-cover-placeholder.png') }}';" />
 
                     <div class="flex flex-col gap-1">
                         <h2 class="text-lg font-semibold">{{ $book->title }}</h2>

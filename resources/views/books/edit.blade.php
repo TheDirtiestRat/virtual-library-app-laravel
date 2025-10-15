@@ -115,7 +115,7 @@
                 <span>Upload Book Cover</span>
                 <span>Recommended size: 1280x1920 pixels PNG, JPEG</span>
                 {{-- <strong><span>Not Working yer (next update)</span></strong> --}}
-                <img id="preview_img" src="{{ asset('storage/images/book-cover-placeholder.png') }}" alt="Book Cover"
+                <img id="preview_img" src="{{ asset('img/book-cover-placeholder.png') }}" alt="Book Cover"
                     class="rounded-xl shadow w-auto max-h-[200px] object-contain" srcset="">
                 <input id="upload-book-cover" type="file" onchange="loadFile(event)" name="book_cover"
                     class="hidden" />

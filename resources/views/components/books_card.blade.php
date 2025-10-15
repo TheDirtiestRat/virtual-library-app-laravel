@@ -4,7 +4,7 @@
     <!-- Book Cover -->
     <img src="{{ asset('storage/book-covers/' . $coverImage) }}" alt="Book Cover for {{ $title }}"
         class="w-full h-auto object-cover rounded-lg shadow-sm"
-        onerror="this.onerror=null;this.src='{{ asset('storage/images/book-cover-placeholder.png') }}';" />
+        onerror="this.onerror=null;this.src='{{ asset('img/book-cover-placeholder.png') }}';" />
 
 
     <!-- Book Info -->

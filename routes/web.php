@@ -18,24 +18,21 @@ Route::get('/login', function () {
 Route::post('/loginuser', [LoginController::class, 'authenticate']);
 Route::post('/logoutuser', [LoginController::class, 'logout']);
 
-// student routs
-Route::get('/students', [StudentController::class, 'list']);
-
 // only login user can access
 Route::middleware(['auth'])->group(function () {
     Route::get('/success_login', function () {
         return view('authentication.success');
     });
 
+    // student routes
+    Route::get('/students', [StudentController::class, 'list']);
+    // book routes
     Route::get('/books/manage', [BookController::class, 'manage']);
-
     Route::get('/books/manage/addBook', [BookController::class, 'create']);
     Route::get('/books/manage/editBookInfo/{book_id}', [BookController::class, 'edit']);
-
     Route::post('/books/manage/storeBook', [BookController::class, 'store']);
     Route::post('/books/manage/updateBook', [BookController::class, 'update']);
     Route::delete('/books/manage/delete/{book_id}', [BookController::class, 'delete']);
-
     Route::get('/books/api/{isbn}', [BookController::class, 'getBookAPI']);
     Route::post('/import-book-csv', [BookController::class, 'import'])->name('import-book.csv');
 });

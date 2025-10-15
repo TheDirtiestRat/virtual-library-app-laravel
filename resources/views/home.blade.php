@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="min-h-screen w-full flex items-center justify-center p-6 bg-cover bg-center bg-blend-multiply bg-gray-500"
-        style="background-image: url('{{ asset('storage/images/bg-library.jpeg') }}')">
+        style="background-image: url('{{ asset('img/bg-library.jpeg') }}')">
         <div class="w-full max-w-3xl flex flex-col gap-4">
 
 

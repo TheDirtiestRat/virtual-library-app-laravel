@@ -23,9 +23,15 @@ class DatabaseSeeder extends Seeder
             'email_verified_at' => now(),
             'password' => 'user',
         ]);
+        User::factory()->create([
+            'name' => 'LibrarianStaff',
+            'email' => 'librarian@example.com',
+            'email_verified_at' => now(),
+            'password' => 'librarian',
+        ]);
 
         // create random books
-        Book::factory(150)->create();
+        Book::factory(250)->create();
 
         // create random students
         Student::factory(550)->create();
