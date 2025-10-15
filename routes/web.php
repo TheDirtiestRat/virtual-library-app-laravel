@@ -18,10 +18,6 @@ Route::get('/login', function () {
 Route::post('/loginuser', [LoginController::class, 'authenticate']);
 Route::post('/logoutuser', [LoginController::class, 'logout']);
 
-// student routs
-Route::get('/students', [StudentController::class, 'list']);
-
-// only login user can access
 Route::middleware(['auth'])->group(function () {
     Route::get('/success_login', function () {
         return view('authentication.success');
@@ -48,3 +44,19 @@ Route::get('/books/category/{category}/{is_manage}', [BookController::class, 'ge
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+
+// Student Routes
+Route::get('/students', [StudentController::class, 'list'])->name("students.list");
+
+Route::get('/students/add', [StudentController::class, 'create'])->name("students.create");
+Route::post('/students/store', [StudentController::class, 'store'])->name("students.store");
+
+Route::get('/students/{id}/edit', [StudentController::class, 'edit'])->name("students.edit");
+Route::put('/students/{id}/update', [StudentController::class, 'update'])->name("students.update");
+
+Route::delete('/students/{id}/delete', [StudentController::class, 'delete'])->name("students.delete");
+
+Route::get('/students/search', [StudentController::class, 'search'])->name("students.search");
+
+Route::get('/students/filter/{course}', [StudentController::class, 'filterStudentsByCourse'])->name('students.filter');
+
